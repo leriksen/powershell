@@ -1,5 +1,5 @@
 
-$SecurePassword = ConvertTo-SecureString -String "mz98Q~JBLRCaMmv_aYS8CJz3pCu1EPQBE~c5qc25"  -AsPlainText -Force
+$SecurePassword = ConvertTo-SecureString -String "sp_key"  -AsPlainText -Force
 $TenantId = "4e5dff48-af2c-4e7e-a5fa-bb6560ec04b6"
 $AppId = "cc251fb5-6194-4c74-87ef-e96fa1a2b85f"
 $testing = '743b758a-f6e7-4823-b706-950a64a6c9f9'
