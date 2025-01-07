@@ -15,9 +15,9 @@ trigger:
       - main
   paths:
     include:
-      - terraform/**/*
-      - modules/**/*
-      - scripts/**/*
+      - terraform
+      - modules
+      - scripts
       - pipelines/infra_deploy_dev.yml
 
 stages:
