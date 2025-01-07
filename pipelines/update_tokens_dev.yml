@@ -1,0 +1,35 @@
+variables:
+  - group: devops-base
+  - group: devops-non-prod
+  - group: devops-dev
+
+pool:
+  vmImage: ubuntu-22.04
+
+trigger:
+  batch: true
+  branches:
+    include:
+      - master
+      - main
+  paths:
+    include:
+      - pipelines/update_tokens_dev.yml
+      - json
+
+stages:
+  - stage: deploy_tokens
+    jobs:
+      - job: deploy_tokens
+        workspace:
+          clean: all
+        steps:
+          - checkout: self
+          - task: AzurePowershell@5
+            displayName: Deploy Tokens
+            inputs:
+              azureSubscription: azure
+              scriptType: filePath
+              scriptPath: json/parse.ps1
+              pwsh: true
+              workingDir: json
