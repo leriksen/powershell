@@ -13,7 +13,7 @@ resource azurerm_role_assignment kv_writers {
   for_each = toset(
     concat(
       [
-        data.azurerm_client_config.current.client_id
+        data.azurerm_client_config.current.object_id
       ],
       module.environment.kv_writers
     )
