@@ -10,11 +10,13 @@ resource azurerm_key_vault akv {
 }
 
 resource azurerm_role_assignment kv_writers {
-  for_each = concat(
-    [
-      data.azurerm_client_config.current.client_id
-    ],
-    module.environment.kv_writers
+  for_each = toset(
+    concat(
+      [
+        data.azurerm_client_config.current.client_id
+      ],
+      module.environment.kv_writers
+    )
   )
   principal_id = each.value
   scope = azurerm_key_vault.akv.id

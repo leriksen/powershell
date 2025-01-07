@@ -12,5 +12,5 @@ output "env_sub" {
 }
 
 output "kv_writers" {
-  value = local.kv_writers
+  value = local.kv_writers[var.environment]
 }
