@@ -32,5 +32,5 @@ stages:
               scriptType: filePath
               scriptPath: json/parse.ps1
               pwsh: true
-              workingDir: json
+              workingDirectory: json
               azurePowerShellVersion: LatestVersion
