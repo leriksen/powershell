@@ -17,7 +17,7 @@ stages:
               echo Installing $(tfcCredentials.secureFilePath) to the .terraform.d directory...
               mkdir -p ~/.terraform.d
               cp $(tfcCredentials.secureFilePath) ~/.terraform.d
-              chmod -r a+r ~/.terraform.d
+              chmod -R a+r ~/.terraform.d
 
           - task: Bash@3
             displayName: terraform init
