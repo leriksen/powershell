@@ -35,7 +35,7 @@ function Set-k8sCluster {
   return $value
 }
 
-Write-Host gci
+Write-Host $(Get-Location)
 
 $myJson = Get-Content .\test.json -Raw | ConvertFrom-Json
 
