@@ -7,20 +7,10 @@ stages:
         workspace:
           clean: all
         steps:
-          - task: DownloadSecureFile@1
-            name: tfcCredentials
-            displayName: Download credentials.tfrc.json
-            inputs:
-              secureFile: credentials.tfrc.json
-
-          - script: |
-              echo Installing $(tfcCredentials.secureFilePath) to the .terraform.d directory...
-              mkdir -p ~/.terraform.d
-              cp $(tfcCredentials.secureFilePath) ~/.terraform.d
-              chmod -R a+r ~/.terraform.d
-
           - task: Bash@3
             displayName: terraform init
+            env:
+              TF_TOKEN_app_terraform_io: $(tfc_token)
             inputs:
               targetType: filePath
               filePath: scripts/terraform_init.sh
@@ -29,6 +19,8 @@ stages:
           - task: Bash@3
             displayName: terraform plan
             name: plan # needed for result later
+            env:
+              TF_TOKEN_app_terraform_io: $(tfc_token)
             inputs:
               targetType: filePath
               filePath: scripts/terraform_plan.sh
