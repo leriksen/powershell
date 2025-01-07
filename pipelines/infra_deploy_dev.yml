@@ -14,27 +14,17 @@ trigger:
       - master
       - main
   paths:
-    exclude:
-      - chef/**/*
-      - pipelines/cluster_config.yml
+    include:
+      - terraform/**/*
+      - modules/**/*
+      - scripts/**/*
+      - pipelines/infra_deploy_dev.yml
 
 stages:
   - template: ./templates/plan.yml
     parameters:
-      sa:                 $(sa)
-      container:          $(container)
-      service_connection: $(service_connection)
-      environment:        $(environment)
-      project:            $(project)
-      subscription_id:    $(subscription_id)
-      id_file:            id_rsa.pub
+      environment: $(environment)
 
   - template: ./templates/apply.yml
     parameters:
-      sa:                 $(sa)
-      container:          $(container)
-      service_connection: $(service_connection)
-      environment:        $(environment)
-      project:            $(project)
-      subscription_id:    $(subscription_id)
-      id_file:            id_rsa.pub
+      environment: $(environment)
