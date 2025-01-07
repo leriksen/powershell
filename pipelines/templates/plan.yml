@@ -28,3 +28,27 @@ stages:
               targetType: filePath
               filePath: scripts/terraform_plan.sh
               workingDirectory: $(System.DefaultWorkingDirectory)/terraform
+              arguments: >
+                -out tfplan.tfout
+
+          - task: CopyFiles@2
+            displayName: stage files to $(Build.StagingDirectory)
+            condition: and(succeeded(), eq(variables['plan.result'], 'changed'))
+            inputs:
+              sourceFolder: $(System.DefaultWorkingDirectory)
+              contents: |
+                terraform/**/*
+                modules/**/*
+                !scripts/**/*
+                !pipelines/**/*
+                !.gitignore
+                !**/.git/**/*
+                !terraform/.terraform/**/*
+              targetFolder: $(Build.StagingDirectory)
+              cleanTargetFolder: true
+
+          - task: PublishBuildArtifacts@1
+            displayName: upload tf artifact
+            condition: and(succeeded(), eq(variables['plan.result'], 'changed'))
+            inputs:
+              artifactName: terraform-plan
