@@ -21,6 +21,9 @@ stages:
 
                 - task: Bash@3
                   displayName: terraform init
+                  env:
+                    TF_TOKEN_app_terraform_io: $(tfc_token)
+                    TF_WORKSPACE: $(workspace)-$(environment)
                   inputs:
                     targetType: filePath
                     filePath: scripts/terraform_init.sh
@@ -28,6 +31,10 @@ stages:
 
                 - task: Bash@3
                   displayName: terraform apply
+                  env:
+                    TF_TOKEN_app_terraform_io: $(tfc_token)
+                    TF_WORKSPACE: $(workspace)-$(environment)
+                    TF_VAR_env: $(environment)
                   inputs:
                     targetType: filePath
                     filePath: scripts/terraform_apply.sh
