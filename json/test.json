@@ -3,9 +3,7 @@
     "scope": "cran_remote",
     "target": "akv",
     "secret_name": "docker_token",
-    "target_name": "akv_name",
-    "target_rg": "akv_rg",
-    "target_sub": "akv_sub"
+    "target_name": "akv_name"
   },
   {
     "scope": "mdm_docker_build",
