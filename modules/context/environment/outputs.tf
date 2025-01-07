@@ -10,3 +10,7 @@ output "tags" {
 output "env_sub" {
   value = local.env_sub[var.environment]
 }
+
+output "kv_writers" {
+  value = local.kv_writers
+}

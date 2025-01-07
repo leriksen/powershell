@@ -2,13 +2,13 @@
   {
     "scope": "cran_remote",
     "target": "akv",
-    "secret_name": "docker_token",
-    "target_name": "akv_name"
+    "secret_name": "dockertoken",
+    "target_name": "tokenrefreshdev"
   },
   {
     "scope": "mdm_docker_build",
     "target": "k8s",
-    "secret_name": "docker_token",
+    "secret_name": "dockertoken",
     "target_name": "k8s_name",
     "target_rg": "k8s_rg",
     "target_sub": "k8s_sub"
