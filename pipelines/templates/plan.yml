@@ -22,7 +22,7 @@ stages:
             name: plan # needed for result later
             env:
 #              TF_TOKEN_app_terraform_io: $(tfc_token)
-#              TF_WORKSPACE: $(workspace)-$(environment)
+              TF_WORKSPACE: $(workspace)-$(environment)
               TF_VAR_env: $(environment)
             inputs:
               targetType: filePath
