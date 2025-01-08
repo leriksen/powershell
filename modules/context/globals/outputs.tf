@@ -7,3 +7,7 @@ output "tags" {
 output location {
   value = "australiasoutheast"
 }
+
+output project {
+  value = "tokenrefesh"
+}

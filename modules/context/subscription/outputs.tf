@@ -14,4 +14,3 @@ output "purpose" {
 output "as_string" {
   value = local.as_string[var.subscription]
 }
-

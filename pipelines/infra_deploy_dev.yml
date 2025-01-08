@@ -25,6 +25,7 @@ stages:
     parameters:
       environment: $(environment)
 
-  - template: ./templates/apply.yml
-    parameters:
-      environment: $(environment)
+# current plan doesnt allow auto-approve, do manually
+#  - template: ./templates/apply.yml
+#    parameters:
+#      environment: $(environment)
