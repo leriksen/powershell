@@ -48,7 +48,7 @@ function Set-k8sCluster {
 
   Write-Host "Processing K8S " + $value
 
-  Import-AzAksCredential -SubscriptionId $subscription -ResourceGroupName $resourceGroup -Name $clusterName
+  Import-AzAksCredential -Admin -Force -SubscriptionId $subscription -ResourceGroupName $resourceGroup -Name $clusterName
 
   return $value
 }
