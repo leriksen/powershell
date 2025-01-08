@@ -14,7 +14,7 @@ trigger:
       - main
   paths:
     include:
-      - pipelines/docker-push_dev.yml
+      - pipelines/docker-push-dev.yml
       - docker
 
 stages:
