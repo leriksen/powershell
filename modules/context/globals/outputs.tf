@@ -9,5 +9,5 @@ output location {
 }
 
 output project {
-  value = "tokenrefesh"
+  value = "tokenrefresh"
 }
