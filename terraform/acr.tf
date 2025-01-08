@@ -7,7 +7,15 @@ resource azurerm_container_registry acr {
 }
 
 resource azurerm_role_assignment acr_push {
-  principal_id = data.azurerm_client_config.current.object_id
+  for_each = toset(
+    concat(
+      [
+        data.azurerm_client_config.current.object_id
+      ],
+      module.environment.acr_pushers
+    )
+  )
+  principal_id = each.value
   scope = azurerm_container_registry.acr.id
   role_definition_name = "AcrPush"
 }

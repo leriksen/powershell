@@ -14,3 +14,7 @@ output "env_sub" {
 output "kv_writers" {
   value = local.kv_writers[var.environment]
 }
+
+output "acr_pushers" {
+  value = local.acr_pushers[var.environment]
+}

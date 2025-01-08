@@ -9,8 +9,8 @@
     "scope": "mdm_docker_build",
     "target": "k8s",
     "secret_name": "dockertoken",
-    "target_name": "k8s_name",
-    "target_rg": "k8s_rg",
-    "target_sub": "k8s_sub"
+    "target_name": "tokenrefreshdev ",
+    "target_rg": "tokenrefreshdev",
+    "target_sub": "743b758a-f6e7-4823-b706-950a64a6c9f9"
   }
 ]

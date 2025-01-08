@@ -1,0 +1,39 @@
+variables:
+  - group: devops-base
+  - group: devops-non-prod
+  - group: devops-dev
+
+pool:
+  vmImage: ubuntu-22.04
+
+trigger:
+  batch: true
+  branches:
+    include:
+      - master
+      - main
+  paths:
+    include:
+      - pipelines/docker-push_dev.yml
+      - docker
+
+stages:
+  - stage: deploy_docker
+    jobs:
+      - job: deploy_docker
+        workspace:
+          clean: all
+        steps:
+          - checkout: self
+          - task: AzurePowershell@5
+            displayName: Deploy Docker
+            inputs:
+              azureSubscription: azure
+              scriptType: inline
+              Inline: >
+                Connect-AzContainerRegistry -Name tokenrefeshdev
+                docker build ./Dockerfile . -t $(Build.BuildId)
+                docker push tokenrefeshdev.azurecr.io/refresh/hello
+              pwsh: true
+              workingDirectory: docker
+              azurePowerShellVersion: LatestVersion
