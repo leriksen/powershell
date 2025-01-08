@@ -30,7 +30,7 @@ stages:
             inputs:
               azureSubscription: azure
               scriptType: inline
-              Inline: >
+              Inline: |-
                 Connect-AzContainerRegistry -Name tokenrefeshdev
                 docker build ./Dockerfile . -t $(Build.BuildId)
                 docker push tokenrefeshdev.azurecr.io/refresh/hello
