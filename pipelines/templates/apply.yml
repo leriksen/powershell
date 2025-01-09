@@ -23,7 +23,7 @@ stages:
                   displayName: terraform init
                   env:
                     TF_TOKEN_app_terraform_io: $(tfc_token)
-                    TF_WORKSPACE: $(workspace)-$(environment)
+                    TF_WORKSPACE: $(workspace)$(environment)
                   inputs:
                     targetType: filePath
                     filePath: scripts/terraform_init.sh

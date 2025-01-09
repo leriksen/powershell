@@ -1,6 +1,6 @@
 output "tags" {
   value = {
-    project = "token-refresh"
+    project = "tokenrefresh"
   }
 }
 
